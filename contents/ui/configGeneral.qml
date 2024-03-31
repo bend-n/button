@@ -18,8 +18,6 @@ import org.kde.ksvg 1.0 as KSvg
 import org.kde.kcmutils as KCM
 
 KCM.SimpleKCM {
-
-    property string cfg_menuLabel: menuLabel.text
     property string cfg_command: command.text
     property string cfg_icon: Plasmoid.configuration.icon
     property string def_icon: "new-command-alarm"
@@ -74,20 +72,8 @@ KCM.SimpleKCM {
                 MenuItem {
                     text: i18nc("@item:inmenu Open icon chooser dialog", "Choose…")
                     icon.name: "document-open-folder"
-                    Accessible.description: i18nc("@info:whatsthis", "Choose an icon for Application Launcher")
+                    Accessible.description: i18nc("@info:whatsthis", "Choose an icon for Button")
                     onClicked: iconDialog.open()
-                }
-                MenuItem {
-                    text: i18nc("@item:inmenu Reset icon to default", "Reset to default icon")
-                    icon.name: "edit-clear"
-                    enabled: cfg_icon !== def_icon
-                    onClicked: cfg_icon = def_icon
-                }
-                MenuItem {
-                    text: i18nc("@action:inmenu", "Remove icon")
-                    icon.name: "delete"
-                    enabled: cfg_icon !== "" && menuLabel.text && Plasmoid.formFactor !== PlasmaCore.Types.Vertical
-                    onClicked: cfg_icon = ""
                 }
             }
         }
@@ -111,45 +97,6 @@ KCM.SimpleKCM {
                     }
                 }
             ]
-        }
-
-        Kirigami.ActionTextField {
-            id: menuLabel
-            enabled: Plasmoid.formFactor !== PlasmaCore.Types.Vertical
-            Kirigami.FormData.label: i18nc("@label:textbox", "Text label:")
-            text: Plasmoid.configuration.menuLabel
-            placeholderText: i18nc("@info:placeholder", "Type here to add a text label")
-            onTextEdited: {
-                cfg_menuLabel = menuLabel.text
-
-                // This is to make sure that we always have a icon if there is no text.
-                // If the user remove the icon and remove the text, without this, we'll have no icon and no text.
-                // This is to force the icon to be there.
-                if (!menuLabel.text) {
-                    cfg_icon = cfg_icon || def_icon
-                }
-            }
-            rightActions: [
-                Action {
-                    icon.name: "edit-clear"
-                    enabled: menuLabel.text !== ""
-                    text: i18nc("@action:button", "Reset menu label")
-                    onTriggered: {
-                        menuLabel.clear()
-                        cfg_menuLabel = ''
-                        cfg_icon = cfg_icon || def_icon
-                    }
-                }
-            ]
-        }
-
-        Label {
-            Layout.fillWidth: true
-            Layout.maximumWidth: Kirigami.Units.gridUnit * 25
-            visible: Plasmoid.formFactor === PlasmaCore.Types.Vertical
-            text: i18nc("@info", "A text label cannot be set when the Panel is vertical.")
-            wrapMode: Text.Wrap
-            font: Kirigami.Theme.smallFont
         }
     }
 }

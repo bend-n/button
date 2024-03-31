@@ -10,13 +10,9 @@
       <label>Icon</label>
       <default>new-command-alarm</default>
     </entry>
-    <entry name="menuLabel" type="string">
-      <label>Text label</label>
-      <default></default>
-    </entry>
     <entry name="command" type="String">
       <label>Command to execute</label>
-      <default>konsole</default>
+      <default>kitty</default>
     </entry>
   </group>
 </kcfg>

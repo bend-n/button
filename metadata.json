@@ -3,8 +3,8 @@
     "KPlugin": {
         "Authors": [
             {
-                "Email": "info@himdek.com",
-                "Name": "Himprakash Deka"
+                "Email": "bend.n@outlook.com",
+                "Name": "bendn"
             }
         ],
         "Category": "Utilities",
@@ -12,14 +12,12 @@
             "Plasma/Applet"
         ],
         "EnabledByDefault": true,
-        "Name": "Run Command",
-        "Description": "Single click execute pre specified command",
-        "Id": "com.himdek.kde.plasma.runcommand",
+        "Name": "Button",
+        "Description": "Button to run commands",
+        "Id": "bendn-button",
         "Icon": "new-command-alarm",
-        "Version": 1.2,
-        "License": "GPL-3.0-or-later",
-        "BugReportUrl": "https://github.com/HimDek/Run-Command-Widget-for-Plasma/issues/new",
-        "Website": "https://himdek.com/Run-Command-Widget-for-Plasma/"
+        "Version": 1.0,
+        "License": "GPL-3.0-or-later"
     },
     "X-Plasma-API-Minimum-Version": "6.0"
 }
